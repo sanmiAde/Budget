@@ -8,6 +8,7 @@ import android.content.Context
 import com.sanmiaderibigbe.budget.data.converter.DateConverter
 import com.sanmiaderibigbe.budget.data.converter.TransactionTypeConverter
 import com.sanmiaderibigbe.budget.data.doa.TransacationDao
+import com.sanmiaderibigbe.budget.data.doa.UserDoa
 import com.sanmiaderibigbe.budget.data.model.Transaction
 
 
@@ -16,6 +17,7 @@ import com.sanmiaderibigbe.budget.data.model.Transaction
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun transactionDao() : TransacationDao
+    abstract fun userDao(): UserDoa
 
 
     companion object {
