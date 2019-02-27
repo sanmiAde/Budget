@@ -13,6 +13,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.sanmiaderibigbe.budget.R
 import com.sanmiaderibigbe.budget.adapter.UserAdapter
+import com.sanmiaderibigbe.budget.ui.users.UsersActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

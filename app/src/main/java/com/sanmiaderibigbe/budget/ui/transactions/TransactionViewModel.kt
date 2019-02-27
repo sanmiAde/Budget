@@ -1,4 +1,4 @@
-package com.sanmiaderibigbe.budget.ui
+package com.sanmiaderibigbe.budget.ui.transactions
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel

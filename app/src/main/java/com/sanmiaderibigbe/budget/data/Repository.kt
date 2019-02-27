@@ -7,6 +7,7 @@ import com.sanmiaderibigbe.budget.data.doa.UserDoa
 import com.sanmiaderibigbe.budget.data.model.Transaction
 import com.sanmiaderibigbe.budget.data.model.TransactionType
 import com.sanmiaderibigbe.budget.data.model.User
+import com.sanmiaderibigbe.budget.data.model.UserWithTransactions
 import org.jetbrains.anko.doAsync
 
 class Repository(application: Application, memoryOnlyDatbase: Boolean) {
@@ -30,6 +31,10 @@ class Repository(application: Application, memoryOnlyDatbase: Boolean) {
     }
 
     fun getUsers() : LiveData<List<User>> = userDoa.getUser()
+
+    fun getUsersAndTheirTransactionData(): LiveData<List<UserWithTransactions>> {
+        return userDoa.getAllBooksWithNotes()
+    }
 
     fun createTransaction(transaction: Transaction) {
         doAsync {

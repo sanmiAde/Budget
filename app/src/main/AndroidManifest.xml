@@ -10,12 +10,12 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".ui.TransactionActivity"
+                android:name=".ui.transactions.TransactionActivity"
                 android:label="@string/title_activity_transaction"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name=".ui.UsersActivity"
+                android:name=".ui.users.UsersActivity"
                 android:label="@string/title_activity_users"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sanmiaderibigbe.budget.data.model.User
+import com.sanmiaderibigbe.budget.data.model.UserWithTransactions
 import com.sanmiaderibigbe.budget.databinding.UserListItemBinding
 
 class UserAdapter(context: Context, val onUserItemClickHandler: OnUserItemClickHandler) : RecyclerView.Adapter<UserAdapter.ViewHolder>()  {
-    private var userList: List<User>? = null
+    private var userList: List<UserWithTransactions>? = null
 
     interface OnUserItemClickHandler{
         fun onClick(user: User)
@@ -20,7 +21,7 @@ class UserAdapter(context: Context, val onUserItemClickHandler: OnUserItemClickH
         return ViewHolder(binding)
     }
 
-    fun setUserList(songs: List<User>?) {
+    fun setUserList(songs: List<UserWithTransactions>?) {
         userList = songs
         notifyDataSetChanged()
     }
@@ -35,7 +36,7 @@ class UserAdapter(context: Context, val onUserItemClickHandler: OnUserItemClickH
     override fun getItemCount(): Int =  userList?.size ?: 0
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
-        val user: User? = userList?.get(p1)
+        val user: UserWithTransactions? = userList?.get(p1)
         holder.userListBinding.user = user
     }
 
@@ -46,7 +47,7 @@ class UserAdapter(context: Context, val onUserItemClickHandler: OnUserItemClickH
         }
         override fun onClick(v: View?) {
             val user = userList?.get(adapterPosition)
-            onUserItemClickHandler.onClick(user!!)
+            onUserItemClickHandler.onClick(user?.user!!)
         }
     }
 }

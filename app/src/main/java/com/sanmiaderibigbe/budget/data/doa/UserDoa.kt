@@ -22,7 +22,7 @@ interface UserDoa {
 
     @Query("SELECT * FROM users_table  ")
     @Transaction
-    fun getAllBooksWithNotes() :List<UserWithTransactions>
+    fun getAllBooksWithNotes() :LiveData<List<UserWithTransactions>>
 
     @Query("delete from users_table")
     fun deleteAll()
