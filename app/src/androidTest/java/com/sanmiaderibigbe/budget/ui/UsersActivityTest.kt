@@ -44,10 +44,12 @@ class UsersActivityTest{
     fun nameTxt_clicked_shouldOpenTransactionScreenForUser(){
         onView(ViewMatchers.withId(R.id.recycler_view))
             .perform(
-                RecyclerViewActions.actionOnItemAtPosition<UserAdapter.ViewHolder>(4   , click()
+                RecyclerViewActions.actionOnItemAtPosition<UserAdapter.ViewHolder>(1   , click()
                 )
             )
 
 
     }
+
+
 }
