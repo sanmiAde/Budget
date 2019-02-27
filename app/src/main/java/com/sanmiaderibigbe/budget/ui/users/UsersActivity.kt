@@ -1,4 +1,4 @@
-package com.sanmiaderibigbe.budget.ui
+package com.sanmiaderibigbe.budget.ui.users
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -7,15 +7,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.sanmiaderibigbe.budget.R
 import com.sanmiaderibigbe.budget.adapter.UserAdapter
 import com.sanmiaderibigbe.budget.data.model.User
+import com.sanmiaderibigbe.budget.ui.transactions.TransactionActivity
 
 import kotlinx.android.synthetic.main.activity_users.*
 
@@ -37,7 +36,8 @@ class UsersActivity : AppCompatActivity(), UserAdapter.OnUserItemClickHandler {
         setSupportActionBar(toolbar)
         viewModel = ViewModelProviders.of(this).get(UsersViewModel::class.java)
         adapter = initRecyclerView()
-        viewModel.getUser().observe(this, Observer { adapter.setUserList(it) })
+        //viewModel.getUser().observe(this, Observer { adapter.setUserList(it) })
+        viewModel.getUserWithTransactionInformation().observe(this, Observer { adapter.setUserList(it) })
         fab_add_new_user.setOnClickListener { view ->
           initAddUserDialog()
         }

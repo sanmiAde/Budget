@@ -4,7 +4,10 @@ import android.app.Application
 import android.arch.lifecycle.LiveData
 import com.sanmiaderibigbe.budget.data.doa.TransacationDao
 import com.sanmiaderibigbe.budget.data.doa.UserDoa
+import com.sanmiaderibigbe.budget.data.model.Transaction
+import com.sanmiaderibigbe.budget.data.model.TransactionType
 import com.sanmiaderibigbe.budget.data.model.User
+import com.sanmiaderibigbe.budget.data.model.UserWithTransactions
 import org.jetbrains.anko.doAsync
 
 class Repository(application: Application, memoryOnlyDatbase: Boolean) {
@@ -27,9 +30,20 @@ class Repository(application: Application, memoryOnlyDatbase: Boolean) {
         transactionDao.deleteAll()
     }
 
-    fun getUsers() : LiveData<List<User>> {
-        return userDoa.getUser()
+    fun getUsers() : LiveData<List<User>> = userDoa.getUser()
+
+    fun getUsersAndTheirTransactionData(): LiveData<List<UserWithTransactions>> {
+        return userDoa.getAllBooksWithNotes()
     }
+
+    fun createTransaction(transaction: Transaction) {
+        doAsync {
+            transactionDao.insert(transaction)
+        }
+
+    }
+
+    fun getTransactionsByUserId(userId: Long): LiveData<List<Transaction>> = transactionDao.getTransactionByUser(userId)
 
 
     companion object {

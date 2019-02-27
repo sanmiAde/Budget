@@ -8,8 +8,8 @@ object TransactionTypeConverter {
     @JvmStatic
     fun fromEnumToInt(value: TransactionType?): Int? {
         return when(value) {
-           TransactionType.CREDIT -> 0
-           TransactionType.DEBIT-> 1
+           TransactionType.CREDIT -> 1
+           TransactionType.DEBIT-> 0
             else -> null
         }
 

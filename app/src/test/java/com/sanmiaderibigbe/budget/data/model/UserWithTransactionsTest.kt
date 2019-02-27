@@ -49,7 +49,7 @@ class UserWithTransactionsTest {
             0
         )
 
-        val sanmi = User(0, "sanmi", 0f)
+        val sanmi = User(0, "sanmi", 10000f)
 
         val sanmiCurrentTransactionList = listOf(transaction1,transaction2, transaction3, transaction4, transaction5)
         sanmiWithAllHisTransation.user = sanmi
@@ -60,6 +60,6 @@ class UserWithTransactionsTest {
     @Test
     fun getCurrentBalance_allTransactionsDoneByUSer_ShouldReturnSum() {
         val currentBalance : Float = sanmiWithAllHisTransation.getCurrentBalance()
-        assertThat(currentBalance, `is`(10000f))
+        assertThat(currentBalance, `is`(20000f))
     }
 }

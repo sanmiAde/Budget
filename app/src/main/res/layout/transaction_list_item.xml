@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://sche
     mas.android.com/apk/res-auto"
@@ -8,8 +6,8 @@
 
     <data>
         <variable
-                name="user"
-                type="com.sanmiaderibigbe.budget.data.model.UserWithTransactions" />
+                name="transaction"
+                type="com.sanmiaderibigbe.budget.data.model.Transaction" />
     </data>
 
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
@@ -18,24 +16,37 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user.user.name}"
-                android:id="@+id/name_txt" tools:text="sanmi"
+                android:text="@{String.valueOf(transaction.amount)}"
+                android:id="@+id/name_txt" tools:text="DEBIT"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" app2:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+                android:layout_marginStart="16dp" android:layout_marginBottom="8dp"
                 app2:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
-                app2:layout_constraintTop_toTopOf="parent"/>
+                app2:layout_constraintTop_toTopOf="parent" app2:layout_constraintVertical_bias="0.666"/>
         <TextView
-                android:text="@{String.valueOf(user.currentBalance)}"
+                android:text="@{transaction.transactionType.name()}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/current_balance_txt" android:textSize="18sp"
+                android:id="@+id/transaction_type_txt" android:textSize="18sp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" tools:text="100000"
                 android:layout_marginTop="8dp"
                 app2:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
-                app2:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
-                app2:layout_constraintBottom_toBottomOf="parent"/>
+                app2:layout_constraintEnd_toEndOf="parent"
+        />
+
+        <TextView
+                android:text="@{transaction.date.toLocaleString()}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/date_txt" android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" tools:text="20/21/20"
+
+                android:layout_marginBottom="8dp"
+                app2:layout_constraintBottom_toBottomOf="parent"
+                app2:layout_constraintTop_toBottomOf="@+id/transaction_type_txt" android:layout_marginEnd="8dp"
+                app2:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

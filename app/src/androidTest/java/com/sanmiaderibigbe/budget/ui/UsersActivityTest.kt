@@ -5,6 +5,7 @@ import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
+
 import android.support.test.espresso.matcher.RootMatchers.isDialog
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
@@ -12,6 +13,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.sanmiaderibigbe.budget.R
 import com.sanmiaderibigbe.budget.adapter.UserAdapter
+import com.sanmiaderibigbe.budget.ui.users.UsersActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -44,12 +46,11 @@ class UsersActivityTest{
     fun nameTxt_clicked_shouldOpenTransactionScreenForUser(){
         onView(ViewMatchers.withId(R.id.recycler_view))
             .perform(
-                RecyclerViewActions.actionOnItemAtPosition<UserAdapter.ViewHolder>(1   , click()
+                RecyclerViewActions.actionOnItemAtPosition<UserAdapter.ViewHolder>(0   , click()
+
                 )
             )
 
 
     }
-
-
 }
