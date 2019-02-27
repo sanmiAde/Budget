@@ -17,12 +17,13 @@ class Transaction(
     @PrimaryKey(autoGenerate = true) var id: Long, transactionAmount : Float,
     var date: Date,
     var transactionType: TransactionType,
+    var userId : Long,
     var amount: Float = when (transactionType) {
         TransactionType.CREDIT -> Math.abs(transactionAmount) * -1
         else -> transactionAmount
     }
 ){
-    constructor() : this(0, 0f, Date(), TransactionType.DEBIT)
+    constructor() : this(0, 0f, Date(), TransactionType.DEBIT, 0)
 }
 
 

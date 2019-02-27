@@ -18,7 +18,8 @@ class TransacationTest{
             0,
             1000f,
             Date(),
-            TransactionType.CREDIT
+            TransactionType.CREDIT,
+            0
         )
        assertThat(transaction.amount, `is`(-1000f))
     }
@@ -29,7 +30,8 @@ class TransacationTest{
             0,
             1000f,
             Date(),
-            TransactionType.DEBIT
+            TransactionType.DEBIT,
+            0
         )
         assertThat(
             "should be positive",
