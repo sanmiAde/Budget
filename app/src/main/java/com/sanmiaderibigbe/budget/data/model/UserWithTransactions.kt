@@ -10,7 +10,7 @@ class UserWithTransactions {
     var user: User? = null
 
     @Relation(parentColumn = "id",
-        entityColumn = "bookId",
+        entityColumn = "userId",
         entity = Transaction::class)
     var currentTransactionList : List<Transaction>? = null
 

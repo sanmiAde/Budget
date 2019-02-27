@@ -1,10 +1,13 @@
 package com.sanmiaderibigbe.budget.data
 
 import android.app.Application
+import android.arch.lifecycle.LiveData
 import com.sanmiaderibigbe.budget.data.doa.TransacationDao
 import com.sanmiaderibigbe.budget.data.doa.UserDoa
+import com.sanmiaderibigbe.budget.data.model.User
+import org.jetbrains.anko.doAsync
 
-class Repository(application: Application) {
+class Repository(application: Application, memoryOnlyDatbase: Boolean) {
 
     private val userDoa: UserDoa
     private val transactionDao: TransacationDao
@@ -15,7 +18,18 @@ class Repository(application: Application) {
         userDoa = db.userDao()
     }
 
+    fun createNewUser(user : User) {
+       doAsync { userDoa.insert(user) }
+    }
 
+    fun deleteAllForTestingPurposes(){
+        userDoa.deleteAll()
+        transactionDao.deleteAll()
+    }
+
+    fun getUsers() : LiveData<List<User>> {
+        return userDoa.getUser()
+    }
 
 
     companion object {
@@ -23,9 +37,9 @@ class Repository(application: Application) {
 
         private var instance: Repository? = null
         @Synchronized
-        fun getRepository(application: Application): Repository {
+        fun getRepository(application: Application, memoryOnlyDatbase: Boolean): Repository {
             if (instance == null) {
-                instance = Repository(application)
+                instance = Repository(application, memoryOnlyDatbase )
             }
             return instance!!
         }

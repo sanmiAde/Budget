@@ -1,7 +1,8 @@
-package com.sanmiaderibigbe.budget
+package com.sanmiaderibigbe.budget.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.sanmiaderibigbe.budget.R
 
 class MainActivity : AppCompatActivity() {
 

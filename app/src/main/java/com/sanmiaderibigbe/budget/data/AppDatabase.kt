@@ -10,9 +10,10 @@ import com.sanmiaderibigbe.budget.data.converter.TransactionTypeConverter
 import com.sanmiaderibigbe.budget.data.doa.TransacationDao
 import com.sanmiaderibigbe.budget.data.doa.UserDoa
 import com.sanmiaderibigbe.budget.data.model.Transaction
+import com.sanmiaderibigbe.budget.data.model.User
 
 
-@Database(entities = [Transaction::class], version = 1)
+@Database(entities = [Transaction::class, User::class], version = 1)
 @TypeConverters(TransactionTypeConverter::class, DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 

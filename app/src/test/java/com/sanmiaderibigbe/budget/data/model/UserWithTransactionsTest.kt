@@ -13,35 +13,40 @@ class UserWithTransactionsTest {
 
     @Before
     fun setup() {
-        val transaction1 = Transaction(
+        val transaction1 =  Transaction(
             0,
             1000f,
             Date(),
-            TransactionType.DEBIT
+            TransactionType.DEBIT,
+            0
         )
         val transaction2 = Transaction(
             0,
             1000f,
             Date(),
-            TransactionType.CREDIT
+            TransactionType.CREDIT,
+            0
         )
         val transaction3 =  Transaction(
             0,
             1000f,
             Date(),
-            TransactionType.DEBIT
+            TransactionType.DEBIT,
+            0
         )
         val transaction4  =  Transaction(
             0,
             1000f,
             Date(),
-            TransactionType.CREDIT
+            TransactionType.CREDIT,
+            0
         )
         val transaction5 = Transaction(
             0,
             10000f,
             Date(),
-            TransactionType.DEBIT
+            TransactionType.DEBIT,
+            0
         )
 
         val sanmi = User(0, "sanmi", 0f)
