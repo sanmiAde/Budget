@@ -8,5 +8,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_transaction"
         tools:context=".ui.TransactionActivity">
-
+    <include layout="@layout/recycler_view"/>
 </android.support.constraint.ConstraintLayout>

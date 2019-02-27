@@ -45,7 +45,8 @@ class UserAdapter(context: Context, val onUserItemClickHandler: OnUserItemClickH
             userListBinding.root.setOnClickListener(this)
         }
         override fun onClick(v: View?) {
-            onUserItemClickHandler.onClick(userListBinding.user!!)
+            val user = userList?.get(adapterPosition)
+            onUserItemClickHandler.onClick(user!!)
         }
     }
 }

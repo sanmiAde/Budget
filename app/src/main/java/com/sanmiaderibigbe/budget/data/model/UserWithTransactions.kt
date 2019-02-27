@@ -15,7 +15,7 @@ class UserWithTransactions {
     var currentTransactionList : List<Transaction>? = null
 
     fun getCurrentBalance(): Float {
-        return currentTransactionList?.map { it.amount }?.sum()!!
+        return currentTransactionList?.map { it.amount }?.sum()!! + user?.currentAmount!!
         }
 }
 

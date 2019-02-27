@@ -5,6 +5,7 @@ import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
+
 import android.support.test.espresso.matcher.RootMatchers.isDialog
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
@@ -44,7 +45,8 @@ class UsersActivityTest{
     fun nameTxt_clicked_shouldOpenTransactionScreenForUser(){
         onView(ViewMatchers.withId(R.id.recycler_view))
             .perform(
-                RecyclerViewActions.actionOnItemAtPosition<UserAdapter.ViewHolder>(4   , click()
+                RecyclerViewActions.actionOnItemAtPosition<UserAdapter.ViewHolder>(0   , click()
+
                 )
             )
 

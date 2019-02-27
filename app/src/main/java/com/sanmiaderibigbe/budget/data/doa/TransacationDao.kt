@@ -10,6 +10,9 @@ interface TransacationDao {
    @Query ("SELECT * FROM transaction_list_table ORDER BY id")
     fun getTransaction(): LiveData<List<Transaction>>
 
+   @Query("SELECT * FROM transaction_list_table  WHERE userId = :userID ORDER BY date DESC ")
+   fun getTransactionByUser(userID: Long) : LiveData<List<Transaction>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(transaction: Transaction): Long
 
