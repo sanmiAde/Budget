@@ -20,7 +20,7 @@ interface UserDoa {
     fun delete(books: User)
 
 
-    @Query("SELECT * FROM users_table")
+    @Query("SELECT * FROM users_table ")
     @Transaction
     fun getAllBooksWithNotes() :List<UserWithTransactions>
 

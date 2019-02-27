@@ -3,6 +3,7 @@ package com.sanmiaderibigbe.budget.ui
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity;
@@ -11,12 +12,21 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import com.sanmiaderibigbe.budget.R
 import com.sanmiaderibigbe.budget.adapter.UserAdapter
+import com.sanmiaderibigbe.budget.data.model.User
 
 import kotlinx.android.synthetic.main.activity_users.*
 
-class UsersActivity : AppCompatActivity() {
+class UsersActivity : AppCompatActivity(), UserAdapter.OnUserItemClickHandler {
+
+    override fun onClick(user: User) {
+       Toast.makeText(this, user.name, Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, TransactionActivity::class.java)
+        intent.putExtra(TransactionActivity.USER_ID_EXTRA, user.id)
+        startActivity(intent)
+    }
 
     private lateinit var viewModel: UsersViewModel
     private lateinit var  adapter: UserAdapter
@@ -55,7 +65,7 @@ class UsersActivity : AppCompatActivity() {
 
 
     private fun initRecyclerView(): UserAdapter {
-        val adapter = UserAdapter(this)
+        val adapter = UserAdapter(this, this)
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)

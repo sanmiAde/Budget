@@ -4,11 +4,14 @@ import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.RootMatchers.isDialog
+import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.sanmiaderibigbe.budget.R
+import com.sanmiaderibigbe.budget.adapter.UserAdapter
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,7 +23,7 @@ class UsersActivityTest{
     var activityRule  = ActivityTestRule(UsersActivity::class.java)
 
     @Test
-    fun fabAddNewUser_ShouldCreateNewUser(){
+    fun fabAddNewUser_clicked_ShouldCreateNewUser(){
         val randomNUmber = (0..100000).random()
         onView(withId(R.id.fab_add_new_user))
             .perform(click())
@@ -34,5 +37,17 @@ class UsersActivityTest{
         onView(withText("CREATE")).inRoot(isDialog())
             .check(matches(isDisplayed()))
             .perform(click())
+    }
+
+
+    @Test
+    fun nameTxt_clicked_shouldOpenTransactionScreenForUser(){
+        onView(ViewMatchers.withId(R.id.recycler_view))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<UserAdapter.ViewHolder>(4   , click()
+                )
+            )
+
+
     }
 }
